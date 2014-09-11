@@ -4,7 +4,8 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
-    @comments = Comment.all
+    @post = Post.find(params[:post_id]) 
+    @comments = @post.comments.all
   end
 
   # GET /comments/1
@@ -14,7 +15,9 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
-    @comment = Comment.new
+      @post = Post.find(params[:post_id])       
+      @comment = @post.comments.new
+    
   end
 
   # GET /comments/1/edit
@@ -31,6 +34,7 @@ class CommentsController < ApplicationController
       if @comment.save
         format.html { redirect_to @post, notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
+	      format.js #will defaultly find <name of method>.js.erb, i.e. create.js.erb in this case
       else
         format.html { render :new }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
@@ -43,7 +47,7 @@ class CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
+        format.html { redirect_to post_comment_path(@post, @comment), notice: 'Comment was successfully updated.' }
         format.json { render :show, status: :ok, location: @comment }
       else
         format.html { render :edit }
@@ -66,7 +70,8 @@ class CommentsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
-      @comment = Comment.find(params[:id])
+	@post = Post.find(params[:post_id])      
+	@comment = Comment.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

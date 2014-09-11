@@ -44,7 +44,8 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }  # @post is actually a url equals to 'post_path(@post)'
+        format.html { redirect_to @post, notice: 'Post was successfully updated.' }  
+        # @post is actually a url equals to 'post_path(@post)'
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit }
