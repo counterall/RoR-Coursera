@@ -10,5 +10,17 @@ class Post < ActiveRecord::Base
 has_many :comments, dependent: :destroy
 validates :title, presence: true
 validates :body, length: {maximum: 15}, allow_blank: false
+
+# after_find do |post|
+# 	puts "Hello, you find post No.#{post.id}!"
+# end
+
+# after_initialize do |post|
+# 	puts "Hello, you have initialized a new record!"
+# end
+
+# after_touch do |post|
+# 	puts "Hello, you just touch a post record!"
+# end
 end
 
