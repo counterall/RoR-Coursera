@@ -12,7 +12,7 @@
 
 <h2>Comments</h2>
 <div id='comments'>
-<!--<% @post.comments.each do |comment| %>
+<!-- <<% @post.comments.each do |comment| %>
     <%= div_for comment do %>
     <p>
     <strong>Commented <%= time_ago_in_words(comment.created_at) %></strong><br />
@@ -21,7 +21,7 @@
     <% end %>
     <%= link_to 'Delete Comment', post_comment_path(@post, comment), method: :delete, data: { confirm: 'Are you sure?'} %>
     </p>
-<% end %>"DRY" principle, it is duplicated by the partial template _comment.html.erb--> 
+<% end %>"DRY" principle, it is duplicated by the partial template _comment.html.erb -->
     <%= render :partial => @post.comments.reverse %>
 </div> 
 

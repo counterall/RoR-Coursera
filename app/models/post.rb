@@ -1,6 +1,6 @@
-class PostValidator < ActiveModel::EachValidator
-	def validate(record)
-		record.errors[:title] << "Must started with a capital letter!" unless record.title =~ /\A[A-Z]/ 
+class ForFunValidator < ActiveModel::EachValidator
+	def validate_each(record, attribute, value)
+		record.errors[attribute] << "Must started with a capital letter!" unless value =~ /\A[A-Z]/ 
 	end
 end
 
@@ -8,9 +8,9 @@ end
 class Post < ActiveRecord::Base
 #include ActiveModel::Validations
 has_many :comments, dependent: :destroy
-validates :title, presence: true
-validates :body, length: {maximum: 15}, allow_blank: false
-
+validates :title, presence: true, for_fun: true
+validates :body, length: {maximum: 25}, allow_blank: false, for_fun: true
+after_validation GeneralCallbacks.new
 # after_find do |post|
 # 	puts "Hello, you find post No.#{post.id}!"
 # end
