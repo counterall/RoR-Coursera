@@ -14,7 +14,7 @@ class GeneralCallbacks
 end
 
 class Comment < ActiveRecord::Base
-belongs_to :post, touch: true
+belongs_to :post, touch: true, inverse_of: :comments
 validates :post_id, :body, :user_id, presence: true, allow_blank: false
 
 after_touch do |comment|

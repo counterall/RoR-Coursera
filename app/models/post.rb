@@ -7,10 +7,9 @@ end
 
 class Post < ActiveRecord::Base
 #include ActiveModel::Validations
-has_many :comments, dependent: :destroy
+has_many :comments, dependent: :destroy, inverse_of: :post
 validates :title, presence: true, for_fun: true
 validates :body, length: {maximum: 25}, allow_blank: false, for_fun: true
-after_validation GeneralCallbacks.new
 # after_find do |post|
 # 	puts "Hello, you find post No.#{post.id}!"
 # end
