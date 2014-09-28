@@ -10,6 +10,9 @@ class Post < ActiveRecord::Base
 has_many :comments, dependent: :destroy, inverse_of: :post
 validates :title, presence: true, for_fun: true
 validates :body, length: {maximum: 25}, allow_blank: false, for_fun: true
+	# def title
+	# 	"The title of post.#{id} is '#{super}'!"	
+	# end
 # after_find do |post|
 # 	puts "Hello, you find post No.#{post.id}!"
 # end
