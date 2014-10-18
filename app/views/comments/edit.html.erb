@@ -1,6 +1,12 @@
+
 <h1>Editing comment</h1>
 
 <%= render 'form' %>
 
 
 <%= link_to 'Back', post_comments_path %>
+
+<% content_for :hello do%>
+	<title>Hello Ruby</title>
+<% end %>
+

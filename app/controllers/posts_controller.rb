@@ -3,6 +3,10 @@ class PostsController < ApplicationController
   # before_action :authenticate, except: [:index, :show]
   # GET /posts
   # GET /posts.json
+  # layout "special_layout"
+  # layout Proc.new {@post.title == "Hello" ? "special_layout" : "application"}
+  # layout "special_layout", only: :show
+  # layout "special_layout", except: [:index, :edit] 
   def index
     @posts = Post.all
   end
@@ -10,11 +14,18 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    #render_to_string :show
+    #render text: "I love Ruby on Rails!"
+    #render json: @post
+    #render xml: @post
+    #render layout: "special_layout"
+    #render status: 500
+    #head :bad_request, location: post_path(@post)
   end
 
-  # GET /posts/new
-  def new
-    @post = Post.new
+  # GET /posts/new   
+  def new     
+    @post = Post.new   
   end
 
   # GET /posts/1/edit
