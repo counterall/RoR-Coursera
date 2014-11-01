@@ -9,6 +9,7 @@ class PostsController < ApplicationController
   # layout "special_layout", except: [:index, :edit] 
   def index
     @posts = Post.all
+    render locals: {hello: "hello!"}
   end
 
   # GET /posts/1
@@ -25,7 +26,7 @@ class PostsController < ApplicationController
 
   # GET /posts/new   
   def new     
-    @post = Post.new   
+    @post = Post.new  
   end
 
   # GET /posts/1/edit

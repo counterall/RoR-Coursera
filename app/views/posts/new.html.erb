@@ -2,4 +2,15 @@
 
 <%= render partial: 'form', locals: {post: @post} %>
 
+<%= form_tag({controller: "posts", action: "new"}, method: "GET", class: "hello") do %>
+	<%= check_box_tag(:try1, 4)%>
+	<%= label_tag(:try1, "try checkbox") %>
+	<%= check_box_tag(:try2)%>
+	<%= label_tag(:try2, "try checkbox") %> </br>
+	<%= radio_button_tag(:try_radio, "hello")%>
+	<%= label_tag(:try_radio_hello, "hello")%>
+	</br>
+	<%= submit_tag("try")%>
+<% end %>
+
 <%= link_to 'Back', posts_url %>
