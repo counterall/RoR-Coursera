@@ -2,7 +2,7 @@
 
 <%= render partial: 'form', locals: {post: @post} %>
 
-<%= form_tag({controller: "posts", action: "new"}, method: "GET", class: "hello") do %>
+<!--<%= form_tag({controller: "posts", action: "new"}, method: "GET", class: "hello") do %>
 	<%= check_box_tag(:try1, 4)%>
 	<%= label_tag(:try1, "try checkbox") %>
 	<%= check_box_tag(:try2)%>
@@ -12,5 +12,7 @@
 	</br>
 	<%= submit_tag("try")%>
 <% end %>
+-->
+<%= select_tag(:city_id, options_for_select([["Beijing", 1, {'data-size'=>'2.8 million'}], ["Shanghai", 2, {'data-size'=>'3.2 million'}], ["Chengdu", 3]], 3)) %> </br>
 
 <%= link_to 'Back', posts_url %>
